@@ -29,8 +29,7 @@ public class MealsUtil {
         List<MealTo> mealsTo = filteredByStreams(MEALS_LIST, isBetweenHalfOpen(LocalTime.of(7, 0),
                 LocalTime.of(12, 0)), CALORIES_PER_DAY);
         mealsTo.forEach(System.out::println);
-        List<MealTo> mealsTo1 = filteredByStreams(MEALS_LIST, null, CALORIES_PER_DAY);
-        mealsTo1.forEach(System.out::println);
+
     }
 
     public static Predicate<Meal> isBetweenHalfOpen(LocalTime startTime, LocalTime endTime) {
