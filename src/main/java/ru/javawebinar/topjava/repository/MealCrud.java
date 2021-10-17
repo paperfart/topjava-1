@@ -2,11 +2,16 @@ package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.Meal;
 
+import java.util.List;
+
 public interface MealCrud {
-    public Meal create(Meal meal);
+    Meal create(Meal meal);
 
-    public void update(int id, Meal meal);
+    void update(int id, Meal meal);
 
-    public void delete(int id);
+    void delete(int id);
 
+    Meal get(int id);
+
+    List<Meal> getAll();
 }
