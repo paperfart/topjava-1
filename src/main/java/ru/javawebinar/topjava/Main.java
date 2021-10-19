@@ -1,7 +1,7 @@
 package ru.javawebinar.topjava;
 
 import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.repository.inmemory.MealCrudMap;
+import ru.javawebinar.topjava.repository.inmemory.InmemoryMealRepository;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * @see <a href="https://github.com/JavaOPs/topjava">Initial project</a>
  */
 public class Main {
-    private final static MealCrudMap MEAL_CRUD_MAP = new MealCrudMap();
+    private final static InmemoryMealRepository MEAL_CRUD_MAP = new InmemoryMealRepository();
     static Meal lunch = new Meal(LocalDateTime.now(), "Lunch", 300);
     static Meal updated = new Meal(lunch.getDateTime(), lunch.getDescription(), 600);
 

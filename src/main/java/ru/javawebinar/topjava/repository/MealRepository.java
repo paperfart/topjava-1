@@ -4,7 +4,7 @@ import ru.javawebinar.topjava.model.Meal;
 
 import java.util.List;
 
-public interface MealCrud {
+public interface MealRepository {
     Meal create(Meal meal);
 
     void update(int id, Meal meal);
