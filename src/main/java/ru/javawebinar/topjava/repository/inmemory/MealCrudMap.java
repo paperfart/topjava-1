@@ -10,12 +10,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MealCrudMap implements MealCrud {
-    AtomicInteger id = new AtomicInteger();
+    AtomicInteger identification = new AtomicInteger();
     Map<Integer, Meal> map = new ConcurrentHashMap<>();
 
     @Override
     public Meal create(Meal m) {
-        return map.computeIfAbsent(id.addAndGet(1), integer -> m);
+        return map.computeIfAbsent(identification.addAndGet(1), integer -> m);
     }
 
     @Override
@@ -25,12 +25,17 @@ public class MealCrudMap implements MealCrud {
 
     @Override
     public void delete(int id) {
-        map.remove(id);
+        if (map.remove(id) == null) {
+            throw new RuntimeException(id + " not found");
+        }
     }
 
     @Override
     public Meal get(int id) {
-        return map.get(id);
+        if (map.containsKey(id)) {
+            return map.get(id);
+        }
+        throw new RuntimeException(id + " not found");
     }
 
     @Override

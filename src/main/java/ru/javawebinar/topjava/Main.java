@@ -24,8 +24,8 @@ public class Main {
         MEAL_CRUD_MAP.update(1, updated);
         System.out.println(MEAL_CRUD_MAP.get(1));
         MEAL_CRUD_MAP.delete(1);
-        System.out.println(MEAL_CRUD_MAP.get(1));
         MEAL_CRUD_MAP.getAll().forEach(System.out::println);
+        System.out.println(MEAL_CRUD_MAP.get(1));
 
     }
 }
