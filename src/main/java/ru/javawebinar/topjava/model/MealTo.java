@@ -1,7 +1,5 @@
 package ru.javawebinar.topjava.model;
 
-import ru.javawebinar.topjava.util.TimeUtil;
-
 import java.time.LocalDateTime;
 
 public class MealTo {
@@ -16,11 +14,7 @@ public class MealTo {
     public LocalDateTime getDateTime() {
         return dateTime;
     }
-
-    public String getTime() {
-        return TimeUtil.printTime(dateTime);
-    }
-
+    
     public String getDescription() {
         return description;
     }

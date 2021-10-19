@@ -1,3 +1,4 @@
+<%@ page import="ru.javawebinar.topjava.util.TimeUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -17,10 +18,12 @@
             <th>Name</th>
             <th>Calories</th>
         </tr>
-        <%--@elvariable id="meals" type="ru.javawebinar.topjava.model.MealTo"--%>
-        <c:forEach items="${meals}" var="meal">
+        <%--@elvariable id="mealList" type="java.util.List"--%>
+        <c:forEach items="${mealList}" var="meal">
+            <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.MealTo"/>
             <tr style=${meal.excess ? "background-color:#D76C55" : "background-color:#68EFA1"}>
-                <td><c:out value=" ${meal.time}"/></td>
+                <td><%= TimeUtil.printTime(meal.getDateTime())%>
+                </td>
                 <td><c:out value=" ${meal.description}"/></td>
                 <td><c:out value=" ${meal.calories}"/></td>
             </tr>
