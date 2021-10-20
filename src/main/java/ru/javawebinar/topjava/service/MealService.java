@@ -6,4 +6,7 @@ public class MealService {
 
     private MealRepository repository;
 
+    public MealService(MealRepository repository) {
+        this.repository = repository;
+    }
 }
