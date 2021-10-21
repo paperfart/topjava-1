@@ -61,7 +61,7 @@ public class InMemoryMealRepository implements MealRepository {
     }
 
     private boolean userAuthorized(int id, int userID) {
-        return id == userID;
+        return repository.get(id).getUserId() == userID;
     }
 }
 
