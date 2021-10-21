@@ -52,7 +52,9 @@ public class InMemoryMealRepository implements MealRepository {
 
     @Override
     public Collection<Meal> getAll() {
+        Integer userID = SecurityUtil.authUserId();
         return repository.values().stream()
+                .filter(meal -> meal.getUserId().equals(userID))
                 .sorted(Comparator.comparing(Meal::getDateTime).reversed())
                 .collect(Collectors.toList());
     }
