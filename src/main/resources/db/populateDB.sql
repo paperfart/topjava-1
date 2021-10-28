@@ -1,4 +1,6 @@
 DELETE
+FROM meals;
+DELETE
 FROM user_roles;
 DELETE
 FROM users;
@@ -11,3 +13,7 @@ VALUES ('User', 'user@yandex.ru', 'password'),
 INSERT INTO user_roles (role, user_id)
 VALUES ('USER', 100000),
        ('ADMIN', 100001);
+
+INSERT INTO meals(user_id, description, calories)
+VALUES (100000, 'lunch', '300'),
+       (100001, 'dinner', '300');
