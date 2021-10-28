@@ -34,11 +34,11 @@ create table meals
         constraint meals_user_id_fk
             references users
             on delete cascade,
-    created     timestamp default now() not null,
+    dateTime    timestamp default now() not null,
     description text                    not null,
     calories    int                     not null
 );
 
 create unique index meals_user_date_index
-    on meals (user_id, created);
+    on meals (user_id, dateTime);
 
