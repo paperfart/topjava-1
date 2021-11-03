@@ -50,11 +50,11 @@ public class JpaMealRepository implements MealRepository {
 
     @Override
     public Meal get(int id, int userId) {
-        User ref = em.getReference(User.class, userId);
-        if (ref.getId() != userId) {
+        Meal meal = em.find(Meal.class, id);
+        if (meal == null || meal.getUser().id() != userId) {
             return null;
         }
-        return em.find(Meal.class, id);
+        return meal;
     }
 
     @Override
