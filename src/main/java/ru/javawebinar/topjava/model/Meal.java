@@ -12,6 +12,7 @@ import java.time.LocalTime;
         @NamedQuery(name = Meal.DELETE, query = "DELETE FROM Meal m WHERE m.id=:id and m.user.id=:user_id"),
         @NamedQuery(name = Meal.ALL_SORTED, query = "SELECT m FROM Meal m WHERE m.user.id=:user_id ORDER BY m.dateTime desc"),
         @NamedQuery(name = Meal.ALL_FILTERED, query = "SELECT m FROM Meal m WHERE m.user.id=?1 AND m.dateTime >=?2 AND m.dateTime <?3 ORDER BY m.dateTime desc"),
+        @NamedQuery(name = Meal.UPDATE, query = "UPDATE Meal m SET m.calories=?1, m.description=?2,m.dateTime=?3 WHERE m.id=?4 and m.user.id=?5"),
 })
 @Entity
 @Table(name = "meals", uniqueConstraints =
@@ -21,6 +22,7 @@ public class Meal extends AbstractBaseEntity {
     public static final String DELETE = "Meal.delete";
     public static final String ALL_SORTED = "Meal.getAll";
     public static final String ALL_FILTERED = "Meal.getAllFiltered";
+    public static final String UPDATE = "Meal.update";
     @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
     private LocalDateTime dateTime;
