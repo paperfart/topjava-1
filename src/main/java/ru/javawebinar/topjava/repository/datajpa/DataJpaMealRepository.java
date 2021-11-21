@@ -1,6 +1,5 @@
 package ru.javawebinar.topjava.repository.datajpa;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.User;
@@ -16,7 +15,7 @@ public class DataJpaMealRepository implements MealRepository {
 
     @PersistenceContext
     private EntityManager em;
-    private static final Sort SORT_BY_DATE = Sort.by(Sort.Direction.DESC, "dateTime");
+   // private static final Sort SORT_BY_DATE = Sort.by(Sort.Direction.DESC, "dateTime");
 
     private final CrudMealRepository crudRepository;
 
