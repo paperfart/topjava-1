@@ -8,7 +8,9 @@
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
 <section>
-    <h3><a href="index.html">Home</a></h3>
+    <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.Meal" scope="request"/>
+    <%--    `meal.new` cause javax.el.ELException - bug tomcat --%>
+    <h3><spring:message code="${meal.isNew() ? 'meal.add' : 'meal.edit'}"/></h3>
     <hr>
     <form method="post" action="meals">
         <input type="hidden" name="id" value="${meal.id}">
