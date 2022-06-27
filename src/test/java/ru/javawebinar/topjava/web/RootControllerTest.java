@@ -2,19 +2,19 @@ package ru.javawebinar.topjava.web;
 
 import org.assertj.core.matcher.AssertionMatcher;
 import org.junit.jupiter.api.Test;
-import ru.javawebinar.topjava.MealTestData;
-import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.to.MealTo;
-import ru.javawebinar.topjava.util.MealsUtil;
 
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static ru.javawebinar.topjava.MealTestData.*;
+import static ru.javawebinar.topjava.MealTestData.MEALTO_MATCHER;
+import static ru.javawebinar.topjava.MealTestData.meals;
 import static ru.javawebinar.topjava.UserTestData.*;
+import static ru.javawebinar.topjava.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
+import static ru.javawebinar.topjava.util.MealsUtil.filterByPredicate;
 
 class RootControllerTest extends AbstractControllerTest {
 
@@ -46,8 +46,7 @@ class RootControllerTest extends AbstractControllerTest {
                         new AssertionMatcher<List<MealTo>>() {
                             @Override
                             public void assertion(List<MealTo> actual) throws AssertionError {
-                                List<Meal> meals = List.of(MealTestData.meal7, meal6, meal5, meal4, meal3, meal2, meal1);
-                                List<MealTo> mealTos = MealsUtil.filterByPredicate(meals, MealsUtil.DEFAULT_CALORIES_PER_DAY, i -> true);
+                                List<MealTo> mealTos = filterByPredicate(meals, DEFAULT_CALORIES_PER_DAY, i -> true);
                                 MEALTO_MATCHER.assertMatch(actual, mealTos);
                             }
                         }
