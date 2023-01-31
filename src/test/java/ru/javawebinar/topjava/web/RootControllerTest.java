@@ -29,7 +29,9 @@ class RootControllerTest extends AbstractControllerTest {
                                 USER_MATCHER.assertMatch(actual, admin, user);
                             }
                         }
-                ));
+                ))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/users.jsp"));
+
     }
 
     @Test
